@@ -61,7 +61,10 @@ else
 {
 testcase.log(Status.Fail, "the title is equal");
 
-
+Takesscreenhsot screenshot= (Takesscreenshot) ob;
+File sourcefile=screenshot.setasoutput(output.file);
+File destinationfile=new File("Google.png");
+FileHandler.CopyFiles(sourcefile, destinationfile);
 
 }
 
