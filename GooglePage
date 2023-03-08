@@ -21,4 +21,20 @@ system.setproperty("webdriver.chrome.driver", "D:\Selenium\chromedriver\\chromed
 webdriver ob=new chromedriver;
 ob.get("http://www.google.com");
 
+String title= ob.gettitle();
+if(titile.equals("Google")
+{
+system.out.println("The title is equal");
+}
+
+else
+{
+system.out.println("The title is not equal");
+Takesscreenhsot screenshot= (Takesscreenshot) ob;
+File sourcefile=screenshot.setasoutput(output.file);
+File destinationfile=new File("Google.png");
+FileHandler.CopyFiles(sourcefile, destinationfile);
+}
+
+
 }
