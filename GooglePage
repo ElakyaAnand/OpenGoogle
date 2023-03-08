@@ -13,14 +13,13 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 public class RunningGoogle {
-
-	public static void main(String[] args) throws IOException {
-
 ExtentReports extentreport;
 ExtentSparkReporter sparkreport;
 ExtentTest testcase;
 
-
+@Beforesuite
+public void browser()
+{
 
 extentreport=new ExtentReports();
 sparkreport=new ExtentSparkReporter("ExtentReport.html");
@@ -29,6 +28,21 @@ extentreport.attachreporter(sparkreport);
 
 system.setproperty("webdriver.chrome.driver", "D:\Selenium\chromedriver\\chromedriver.exe");
 webdriver ob=new chromedriver;
+}
+
+
+@Aftersuite
+public void close()
+
+{
+
+ob.close();
+extentreport.flush();
+}
+
+@Test
+public void google()
+{
 
 testcase=extentreport.createTestcase("Logging into google page");
 ob.get("http://www.google.com");
@@ -48,13 +62,47 @@ else
 testcase.log(Status.Fail, "the title is equal");
 
 
+
+}
+
+@Test
+public void bing()
+{
+testcase=extentreport.createTestcase("Logging into bing page");
+ob.get("http://www.google.com");
+
+testcase.log(Status.INFO, "Getting the title from the webpage");
+
+String title= ob.gettitle();
+
+testcase.log(Status.INFO, "Checking the title");
+if(titile.equals("bing")
+{
+testcase.log(Status.pass, "the title is equal");
+}
+
+else
+{
+testcase.log(Status.Fail, "the title is equal");
+
+
 Takesscreenhsot screenshot= (Takesscreenshot) ob;
 File sourcefile=screenshot.setasoutput(output.file);
 File destinationfile=new File("Google.png");
 FileHandler.CopyFiles(sourcefile, destinationfile);
 }
 
-ob.close();
-extentreport.flush();
+
+}
+
+	public static void main(String[] args) throws IOException {
+
+
+
+
+
+
+
+
 
 }
