@@ -100,7 +100,7 @@ FileHandler.CopyFiles(sourcefile, destinationfile);
 
 	public static void main(String[] args) throws IOException {
 
-
+RunningGoogle rungoogle=new RunningGoogle();
 
 system.print.outln("Fork creation");
 
